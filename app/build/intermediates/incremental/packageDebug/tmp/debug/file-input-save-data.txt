@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Mon Nov 16 20:28:34 GMT+06:00 2020
+0.baseType=DIRECTORY
+0.base=C\:\\Users\\Artil\\Downloads\\Vision\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.path=classes.dex
+0.set=DEX
+count=1
