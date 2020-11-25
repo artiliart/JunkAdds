@@ -26,6 +26,8 @@ import com.google.android.gms.vision.text.TextBlock;
 
 import java.util.List;
 
+import static com.google.android.gms.samples.vision.ocrreader.Utils.checkText;
+
 /**
  * Graphic instance for rendering TextBlock position, size, and ID within an associated graphic
  * overlay view.
@@ -35,10 +37,12 @@ public class OcrGraphic extends GraphicOverlay.Graphic {
     private int id;
 
     private static final int TEXT_COLOR = Color.WHITE;
+    private static final int PRIMARY_COLOR = Color.RED;
 
     private static Paint rectPaint;
     private static Paint textPaint;
     private final TextBlock textBlock;
+    private static Paint detectedPaint;
 
     OcrGraphic(GraphicOverlay overlay, TextBlock text) {
         super(overlay);
@@ -57,6 +61,12 @@ public class OcrGraphic extends GraphicOverlay.Graphic {
             textPaint = new Paint();
             textPaint.setColor(TEXT_COLOR);
             textPaint.setTextSize(54.0f);
+        }
+
+        if (detectedPaint == null) {
+            detectedPaint = new Paint();
+            detectedPaint.setColor(PRIMARY_COLOR);
+            detectedPaint.setTextSize(54.0f);
         }
     }
 
@@ -107,7 +117,12 @@ public class OcrGraphic extends GraphicOverlay.Graphic {
         for(Text currentText : textComponents) {
             float left = translateX(currentText.getBoundingBox().left);
             float bottom = translateY(currentText.getBoundingBox().bottom);
+            if(checkText(currentText.getValue())){
+                canvas.drawText(currentText.getValue(), left, bottom, detectedPaint);
+            }
+            else{
             canvas.drawText(currentText.getValue(), left, bottom, textPaint);
+            }
         }
     }
 }

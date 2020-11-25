@@ -15,8 +15,11 @@
  */
 package com.google.android.gms.samples.vision.ocrreader;
 
+import android.content.Context;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +30,12 @@ import java.util.Set;
 
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
+
+import xdroid.toaster.Toaster;
+
+import static com.google.android.gms.samples.vision.ocrreader.Utils.checkText;
 
 /**
  * A very simple Processor which gets detected TextBlocks and adds them to the overlay
@@ -36,8 +44,10 @@ import com.google.android.gms.vision.text.TextBlock;
 public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
 
     private GraphicOverlay<OcrGraphic> graphicOverlay;
+    private Context context;
 
-    OcrDetectorProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
+    OcrDetectorProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay, Context context) {
+        this.context = context;
         graphicOverlay = ocrGraphicOverlay;
     }
 
@@ -55,39 +65,14 @@ public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
         for (int i = 0; i < items.size(); ++i) {
             TextBlock item = items.valueAt(i);
             if (item != null && item.getValue() != null) {
-                Log.d("OcrDetectorProcessor", "Text detected! " + item.getValue());
-                OcrGraphic graphic = new OcrGraphic(graphicOverlay, item);
-                graphicOverlay.add(graphic);
+                if (checkText(item.getValue())) {
+                    OcrGraphic graphic = new OcrGraphic(graphicOverlay, item);
+                    graphicOverlay.add(graphic);
+                    Toaster.toast("Dangerous additive detected!");
+                }
             }
         }
     }
-            //Не смог наладить проверку через arraylist//
-    public boolean checkText(Detector.Detections<TextBlock> detections) {
-        SparseArray<TextBlock> items = detections.getDetectedItems();
-        SparseArray array = detections.getDetectedItems();
-        array.put(0, "e103");
-        array.put(1, "e123");
-        array.put(2, "e216");
-        array.put(3, "e217");
-        Collections.sort((List<Comparable>) items);
-        Collections.sort((List<Comparable>) array);
-        boolean equalLists = items.size() == array.size() && ((List<Comparable>) items).containsAll((Collection<?>) array);
-        Set<Integer> objectsIds = new HashSet<>();
-        if (items == null && array == null)
-            return false;
-        if (items == null && array != null)
-            return true;
-        if (items != null && array == null)
-            return true;
-        int max = items.size() > array.size() ? items.size() : array.size();
-        for (int i = 0; i < max; i++) {
-            if (!items.equals(array)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
         /**
          * Frees the resources associated with this detection processor.
