@@ -102,6 +102,7 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks:15.0.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement:15.0.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-v4:27.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid:0.3.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7:27.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:transition:27.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7:27.1.1@aar" level="project" />
@@ -112,6 +113,17 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable:27.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat:27.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-compat:27.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-widget:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-adapter:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-enum-format:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-viewholder:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-app:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-inflater:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-toaster:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-options:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-customservice:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-collections:0.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.shamanland:xdroid-core:0.3.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:livedata-core:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:viewmodel:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime:1.1.0@aar" level="project" />
